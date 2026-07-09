@@ -1,12 +1,12 @@
 services:
   postgres:
-    image: postgres:alpine
+    image: postgres:16-alpine
     environment:
       POSTGRES_DB: httpsms
       POSTGRES_PASSWORD: dbpassword
       POSTGRES_USER: dbusername
     volumes:
-      - postgres_data_v2:/var/lib/postgresql/data
+      - postgres_data_v3:/var/lib/postgresql/data
     ports:
       - "5435:5432"
     restart: on-failure
