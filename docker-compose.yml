@@ -37,7 +37,7 @@ services:
       redis:
         condition: service_started
     env_file:
-      - ./api/.env
+      - ./.env
 
   web:
     build:
