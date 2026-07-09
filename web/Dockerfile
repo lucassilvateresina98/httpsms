@@ -6,9 +6,9 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm@8
 
-RUN pnpm config set ignore-scripts false && pnpm install
+RUN pnpm install
 
 COPY . .
 RUN pnpm run generate
