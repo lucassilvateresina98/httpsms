@@ -6,7 +6,6 @@ services:
       POSTGRES_PASSWORD: dbpassword
       POSTGRES_USER: dbusername
     volumes:
-      # Criamos um nome novo (v2) para forçar a criação de um disco limpo
       - postgres_data_v2:/var/lib/postgresql/data
     ports:
       - "5435:5432"
@@ -16,7 +15,6 @@ services:
     image: redis:latest
     command: redis-server
     volumes:
-      # Novo volume para o Redis também, só por precaução
       - redis_data_v2:/var/lib/redis
     ports:
       - "6379:6379"
@@ -29,12 +27,12 @@ services:
       - "8000:8000"
     depends_on:
       postgres:
-        condition: service_started # Agora ele só exige que o banco inicie, sem testes chatos
+        condition: service_started
       redis:
         condition: service_started
     env_file:
       - ./.env
-    restart: on-failure # Se a API ligar antes do banco estar 100% pronto, ela reinicia sozinha
+    restart: on-failure
 
   web:
     build:
@@ -44,9 +42,11 @@ services:
     depends_on:
       api:
         condition: service_started
+    # A CORREÇÃO ESTÁ AQUI: Agora o Web também lê as variáveis do Easypanel
+    env_file:
+      - ./.env
     restart: on-failure
 
 volumes:
-  # Declarando os novos volumes limpos
   redis_data_v2:
   postgres_data_v2:
