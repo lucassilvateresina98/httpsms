@@ -11,6 +11,7 @@ RUN npm install -g pnpm@8
 RUN pnpm install
 
 COPY . .
+COPY .env.docker .env
 RUN pnpm run generate
 
 # production stage
