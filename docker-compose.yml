@@ -40,7 +40,7 @@ services:
     build:
       context: ./web
     ports:
-      - "3000:3000"
+      - "3005:3000"
     depends_on:
       api:
         condition: service_started
