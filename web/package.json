@@ -8,7 +8,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prepare": "cd .. && husky web/.husky",
     "api:models": "npx swagger-typescript-api generate -p ../api/docs/swagger.json -o ./shared/types -n api.ts --no-client",
     "lint:js": "eslint .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,vue}\"",
