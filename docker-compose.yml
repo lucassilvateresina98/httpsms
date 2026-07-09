@@ -49,4 +49,4 @@ services:
 
 volumes:
   redis_data_v2:
-  postgres_data_v2:
+  postgres_data_v3:
